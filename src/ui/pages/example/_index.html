@@ -1,0 +1,11 @@
+﻿<section class="container" data-ng-controller="ExamplePageController" id="ExamplePage">
+    <h1>{{i18n.ExamplePage}}</h1>
+    <h3>Links to test UIRouter</h3>
+    <a data-ui-sref="example.folder({id: 123})">Folder>123</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <a data-ui-sref="example.filter({filter: 'test'})">Filter>test</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <a data-ui-sref="example.folderFilter({filter: 'test2', id: 321})">Folder>321 Filter>test2</a>
+    <h3>Using helloWorld widget with "Peter"</h3>
+    <div data-hello-world="'Peter'"></div>
+    <h3>Handling nested views on this page:</h3>
+    <div data-ui-view autoscroll="false"></div>
+</section>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html data-ng-controller="myAppController">
+<head>
+    <meta charset="utf-8">
+    <title data-ng-bind="i18n.EpsilonPageTitle"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="/lib/bower_components/jquery/jquery.js" type=""></script>
+    <link href="/lib/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            padding-top: 50px;
+        }
+    </style>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+        <script src="/lib/bower_components/html5shiv/dist/html5shiv.js"></script>
+        <script src="/lib/bower_components/respond/dest/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="/favicon.ico">
+</head>
+
+<body>
+
+    <div class="navbar navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/" data-ng-bind="i18n.EpsilonApp"></a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a data-ui-sref="example" data-ng-bind="i18n.Example"></a>
+                    </li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </div>
+
+    <div data-ui-view class="container" style="min-height: 900px;" autoscroll="false"></div>
+
+    <script src="/lib/bower_components/requirejs/require.js" data-main="/ui/apps/myApp/myApp.cfg.js"></script>
+
+</body>
+</html>

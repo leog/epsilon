@@ -1,0 +1,10 @@
+<h4>Accessing UIRouter parameters</h4>
+<p data-ng-if="id"><b> - Folder id:</b> {{ id }}</p>
+<p data-ng-if="filter"><b> - Filter:</b> {{ filter }}</p>
+<h4>Accessing UIRouter embeded data</h4>
+<p data-ng-if="data"><b> - Data:</b> {{ data }}</p>
+<h4>Using fileSize filter</h4>
+<p><b> - 12345 bytes == </b> {{ 12345 | fileSizeFlt }}</p>
+<h4>Using helloWorld widget with "{{name}}" on nested view</h4>
+<div data-hello-world="name"></div>
+<br>
