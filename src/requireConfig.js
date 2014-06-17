@@ -1,6 +1,6 @@
 /*global require*/
 require.config({
-    'baseUrl': 'http://127.0.0.1',
+    'baseUrl': 'http://leog.github.io/epsilon/src',
     'paths': {
         // Bower libraries paths
         'i18n': 'lib/bower_components/requirejs-i18n/i18n',
