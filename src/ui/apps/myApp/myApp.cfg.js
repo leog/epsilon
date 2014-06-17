@@ -1,6 +1,6 @@
 ﻿/*global require document*/
 require([
-    "/requireConfig.js"
+    "http://leog.github.io/epsilon/src/requireConfig.js"
 ], function () {
     "use strict";
     require([
