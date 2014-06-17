@@ -32,7 +32,7 @@ define([
                 // Setting sub-route for the page based on this page settings name
                 $stateProvider.state(settings.pageConfig.name + '.folder', {
                     url: '/{id:[0-9]*}',
-                    templateUrl: require.toUrl('pages/example/partials/_listView.html'),
+                    templateUrl: require.toUrl('pages/example/partials/listView.html'),
                     controller: listViewCtrl,
                     data: {
                         someText: "abcde",
@@ -41,12 +41,12 @@ define([
                 });
                 $stateProvider.state(settings.pageConfig.name + '.folderFilter', {
                     url: '/{id:[0-9]*}/{filter:[a-zA-Z]*}',
-                    templateUrl: require.toUrl('pages/example/partials/_listView.html'),
+                    templateUrl: require.toUrl('pages/example/partials/listView.html'),
                     controller: listViewCtrl
                 });
                 $stateProvider.state(settings.pageConfig.name + '.filter', {
                     url: '/{filter:[a-zA-Z]*}',
-                    templateUrl: require.toUrl('pages/example/partials/_listView.html'),
+                    templateUrl: require.toUrl('pages/example/partials/listView.html'),
                     controller: listViewCtrl
                 });
             }
