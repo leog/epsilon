@@ -14,7 +14,7 @@ define([
                 scope.greet = "Hello";
                 scope.longText = "This is a very long text to show truncate module";
             },
-            templateUrl: require.toUrl('widgets/helloWorld/_index.html')
+            templateUrl: require.toUrl('widgets/helloWorld/index.html')
         };
     }];
 });
