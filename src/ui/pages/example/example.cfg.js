@@ -16,7 +16,7 @@ define([
         pageConfig: {
             name: 'example',
             url: '/example',
-            templateUrl: require.toUrl('pages/example/_index.html')
+            templateUrl: require.toUrl('pages/example/index.html')
         }
     };
     // Angular Module definition
