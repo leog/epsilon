@@ -47,5 +47,6 @@ require.config({
                 'gb': 1073741824
             }
         }
-    }
+    },
+    deps: ['apps/myApp/myApp.cfg']
 });

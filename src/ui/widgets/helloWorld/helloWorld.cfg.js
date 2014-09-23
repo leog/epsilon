@@ -1,7 +1,7 @@
 /*global define*/
 define([
     // Widget dependencies
-    'widgets/helloWorld/dependencies',
+    'widgets/helloWorld/helloWorld.deps',
     // Libraries
     'angular',
     // Widget config resources

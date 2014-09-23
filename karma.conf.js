@@ -18,12 +18,12 @@ module.exports = function(config) {
             {pattern: 'src/**/*.js', included: false},
             {pattern: 'src/lib/**/*.js', included: false},
             {pattern: 'test/unit/**/*.spec.js', included: false},
-            'test/requireConfig.js'
+            'test/test-main.js'
         ],
 
         // list of files to exclude
         exclude: [
-            'src/requireConfig.js'
+            'src/main.js'
         ],
 
 

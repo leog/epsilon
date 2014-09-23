@@ -1,7 +1,7 @@
 ﻿/*global define*/
 define([
     // Page dependencies
-    'pages/example/dependencies',
+    'pages/example/example.deps',
     // Libraries
     'require', 'angular',
     // Page config resources
