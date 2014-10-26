@@ -33,19 +33,18 @@ module.exports = function (grunt) {
      */
 
     var appConfig = {
-        app: 'src',
-        widgets: 'src/ui/widgets',
-        pages: 'src/ui/pages',
-        apps: 'src/ui/apps',
-        ui: 'src/ui',
-        lib: 'src/lib'
+        app: 'app',
+        lib: 'app/lib',
+        pages: 'app/pages',
+        widgets: 'app/widgets',
+        directives: 'app/lib/directives'
     };
 
     /**
      *  Initial configuration
      */
     grunt.initConfig({
-        epsilon: appConfig,
+        appConfig: appConfig,
         karma: {
             unit: {
                 configFile: 'karma.conf.js'
@@ -56,10 +55,10 @@ module.exports = function (grunt) {
                 config: "eslint.json"
             },
             all: [
-                '<%= epsilon.lib %>/**/*.js',
-                '<%= epsilon.ui %>/**/*.js',
-                '<%= epsilon.app %>/api/**/*.js',
-                '!<%= epsilon.lib %>/bower_components/**/*.js'
+                '<%= appConfig.lib %>/**/*.js',
+                '<%= appConfig.widgets %>/**/*.js',
+                '<%= appConfig.pages %>/api/**/*.js',
+                '!<%= appConfig.lib %>/bower_components/**/*.js'
             ]
         },
         /**
@@ -71,44 +70,41 @@ module.exports = function (grunt) {
                 ieCompat: true,
                 yuicompress: true
             },
+            app: {
+                src: '<%= appConfig.lib %>/styles/myApp.less',
+                dest: '<%= appConfig.lib %>/styles/myApp.min.css'
+            },
             directives: {
-                src: [
-                    '<%= epsilon.lib %>/directives/content/less/*.less'
-                ],
-                dest: '<%= epsilon.lib %>/directives/content/stylesheets/directives.min.css'
+                expand: true,
+                cwd: '<%= appConfig.directives %>',
+                src: '**/*.less',
+                dest: '<%= appConfig.directives %>',
+                ext: '.dir.min.css'
+            },
+            pages: {
+                expand: true,
+                cwd: '<%= appConfig.pages %>',
+                src: '**/styles/*.less',
+                dest: '<%= appConfig.pages %>',
+                ext: '.min.css'
+            },
+            widgets: {
+                expand: true,
+                cwd: '<%= appConfig.widgets %>',
+                src: '**/styles/*.less',
+                dest: '<%= appConfig.widgets %>',
+                ext: '.min.css'
             }
         },
         /**
          * Looks for gruntfiles inside components and runs specified tasks
          * @module grunt-hub
-         * @todo Add subtask for other epsilon components
          * @prop {object} all
          * @param {object} widgets
          */
         hub: {
-            all: {
-                src: ['<%= epsilon.ui %>/**/Gruntfile.js'],
-                tasks: ['compile']
-            },
-            apps: {
-                src: [
-                    '<%= epsilon.apps %>/**/Gruntfile.js',
-                    '!<%= epsilon.apps %>/**/node_modules/**'
-                ],
-                tasks: ['compile']
-            },
-            pages: {
-                src: [
-                    '<%= epsilon.pages %>/**/Gruntfile.js',
-                    '!<%= epsilon.pages %>/**/node_modules/**'
-                ],
-                tasks: ['compile']
-            },
             widgets: {
-                src: [
-                    '<%= epsilon.widgets %>/**/Gruntfile.js',
-                    '!<%= epsilon.widgets %>/**/node_modules/**'
-                ],
+                src: ['<%= appConfig.widgets %>/**/Gruntfile.js'],
                 tasks: ['compile']
             }
         },
@@ -121,24 +117,23 @@ module.exports = function (grunt) {
         watch: {
             all: {
                 options: {livereload: true},
-                files: ['<%= epsilon.ui %>/**/*.html']
+                files: ['<%= appConfig %>/**/*.html']
             },
             styles: {
                 files: [
-                    '<%= epsilon.apps %>/**/content/less/*.less',
-                    '<%= epsilon.pages %>/**/content/less/*.less',
-                    '<%= epsilon.widgets %>/**/content/less/*.less',
-                    '<%= epsilon.lib %>/content/less/*',
-                    '<%= epsilon.lib %>/directives/content/less/*.less'
+                    '<%= appConfig.pages %>/**/styles/*.less',
+                    '<%= appConfig.widgets %>/**/styles/*.less',
+                    '<%= appConfig.lib %>/styles/less/*.less',
+                    '<%= appConfig.directives %>/**/*.less'
                 ],
-                tasks: ['hub:apps', 'hub:pages', 'hub:widgets', 'less']
+                tasks: ['hub:widgets', 'less']
             },
             javascript: {
                 files: [
-                    '<%= epsilon.lib %>/**/*.js',
-                    '<%= epsilon.widgets %>/**/*.js',
-                    '<%= epsilon.pages %>/**/*.js',
-                    '<%= epsilon.apps %>/**/*.js'
+                    '<%= appConfig.lib %>/**/*.js',
+                    '<%= appConfig.widgets %>/**/*.js',
+                    '<%= appConfig.pages %>/**/*.js',
+                    '<%= appConfig.apps %>/**/*.js',
                 ],
                 tasks: ['eslint']
             }
@@ -163,7 +158,7 @@ module.exports = function (grunt) {
                     middleware: function (connect) {
                         return [
                             modRewrite([
-                                '!\\.html|\\.js|\\.eot|\\.svg|\\.ttf|\\.woff|\\.css|\\.png|\\.gif$ /ui/apps/myApp/index.html [L]'
+                                '!\\.html|\\.js|\\.eot|\\.svg|\\.ttf|\\.woff|\\.css|\\.png|\\.gif$ /index.html [L]'
                             ]),
                             corsMiddleware,
                             mountFolder(connect, appConfig.app)
@@ -180,21 +175,6 @@ module.exports = function (grunt) {
             local: {
                 url: '<%= connect.options.protocol %>://<%= connect.options.hostname %>:<%= connect.options.port %>/<%= connect.options.base %>'
             }
-        },
-        /**
-         * Used to run several tasks at once to speed up complex tasks
-         * @module grunt-concurrent
-         * @prop local
-         * @prop dev
-         * @prop mocked
-         */
-        concurrent: {
-            options: {
-                logConcurrentOutput: true
-            },
-            local: {
-                tasks: ['hub:apps', 'hub:widgets', 'hub:pages']
-            }
         }
     });
 
@@ -206,10 +186,10 @@ module.exports = function (grunt) {
         grunt.task.run([
             'eslint',
             'less',
-            'concurrent:local',
+            //'hub:widgets',
             'connect:normal',
             'open:local',
-            'watch'
+            //'watch'
         ]);
     });
 };

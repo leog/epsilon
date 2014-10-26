@@ -10,5 +10,8 @@
 		"dot-notation": [1],
 		"no-loop-func": [1],
 		"no-unused-expressions": [1]
+    },
+    "globals":{
+        "define": true
     }
 }
