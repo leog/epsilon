@@ -1,0 +1,11 @@
+.linear-gradient(@begin: black, @end: white, @switch : 100%) {
+    background:  @begin;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@begin), color-stop(@switch,@end)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, @begin 0%, @end @switch); /* Chrome10+,Safari5.1+ */
+    background: -moz-linear-gradient(top, @begin, @end @switch); /* FF3.6+ */
+    background: -o-linear-gradient(top, @begin, @end @switch);  /* Opera 11.10+ */
+    background: linear-gradient(top, @begin, @end @switch); /* W3C */
+    background: -ms-linear-gradient(top, @begin 0%, @end @switch); /* IE10+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=@begin, endColorstr=@end,GradientType=0 ); /* IE6-9 */
+    zoom: 1; /*to trigger hasLayout in IE6-7 so the gradient works*/
+}
