@@ -1,9 +1,7 @@
 define([
     'jquery',
     // External deps
-    'angular-truncate',
-    // Epsilon deps
-    'filters/fileSize.flt'
+    'angular-truncate'
 ], function($) {
     "use strict";
     var externalDeps = ['truncate'],

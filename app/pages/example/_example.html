@@ -1,0 +1,10 @@
+﻿<section class="container" id="ExamplePage">
+    <h1>{{i18n.ExamplePage}}</h1>
+    <h3>Using a service</h3>
+    <p>Your user agent is: <b>{{userAgent}}</b></p>
+    <h3>Using helloWorld widget with "Peter"</h3>
+    <div hello-world="'Peter'"></div>
+    <h3>Handling nested views on this page:</h3>
+    <a ui-sref="example.subexample">Load nested content</a>
+    <div ui-view="innerContent" autoscroll="false"></div>
+</section>

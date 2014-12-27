@@ -2,9 +2,9 @@ define([
     'jquery',
     // External deps
     'angular-ui-router',
-    // Epsilon deps
-    // > Pages
-    'pages/example/example.cfg'
+    // Internal deps
+    // > Libraries
+    'directives/listing/listing.dir'
 ], function($) {
     "use strict";
     var externalDeps = ['ui.router'],

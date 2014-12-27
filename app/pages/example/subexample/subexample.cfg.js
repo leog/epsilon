@@ -1,24 +1,24 @@
-﻿define([
+define([
     'angular',
-    'pages/example/example.deps',
-    'pages/example/example.ctrl',
-    'css!pages/example/example.min.css'
+    'pages/example/subexample/subexample.deps',
+    'pages/example/subexample/subexample.ctrl',
+    'css!pages/example/subexample/subexample.min.css'
 ], function (angular, dependencies, controller) {
     'use strict';
     var settings = {
-        moduleName: 'ExamplePage',
+        moduleName: 'SubexamplePage',
         pageConfig: {
-            url: '/example',
-            templateUrl: 'pages/example/_example.html'
+            url: '/subexample',
+            templateUrl: 'pages/example/subexample/_subexample.html'
         }
     };
     angular
         .module(settings.moduleName, dependencies)
         .config(function ($stateProvider) {
-            $stateProvider.state('example', {
+            $stateProvider.state('example.subexample', {
                 url: settings.pageConfig.url,
                 views: {
-                    'content@': {
+                    innerContent: {
                         templateUrl: settings.pageConfig.templateUrl,
                         controller: controller
                     }

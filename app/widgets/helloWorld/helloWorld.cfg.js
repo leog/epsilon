@@ -6,7 +6,7 @@ define([
     // Widget config resources
     'widgets/helloWorld/helloWorld.ctrl',
     // Styles
-    'css!widgets/helloWorld/styles/helloWorld.min.css'
+    'css!widgets/helloWorld/helloWorld.min.css'
 ], function(dependencies, angular, controller) {
     "use strict";
     var settings = { moduleName: 'HelloWorldWidget' };

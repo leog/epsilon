@@ -1,21 +1,23 @@
 require.config({
-    'baseUrl': 'http://127.0.0.1',
+    'baseUrl': '',
     'paths': {
         // Bower libraries paths
-        'i18n': 'lib/bower_components/requirejs-i18n/i18n',
-        'jquery': 'lib/bower_components/jquery/jquery',
-        'angular': 'lib/bower_components/angular/angular',
-        'angular-ui-router': 'lib/bower_components/angular-ui-router/release/angular-ui-router.min',
-        'angular-truncate': 'lib/bower_components/angular-truncate/src/truncate',
-        'bootstrap': 'lib/bower_components/bootstrap/dist/js/bootstrap.min',
+        'i18n': 'lib/vendor/bower_components/requirejs-i18n/i18n',
+        'jquery': 'lib/vendor/bower_components/jquery/jquery',
+        'angular': 'lib/vendor/bower_components/angular/angular',
+        'angular-ui-router': 'lib/vendor/bower_components/angular-ui-router/release/angular-ui-router',
+        'angular-truncate': 'lib/vendor/bower_components/angular-truncate/src/truncate',
+        'bootstrap': 'lib/vendor/bower_components/bootstrap/dist/js/bootstrap.min',
 
         // Epsilon paths
         'lib': 'lib',
         'pages': 'pages',
         'widgets': 'widgets',
-        'bower': 'lib/bower_components',
         'filters': 'lib/filters',
-        'directives': 'lib/directives'
+        'providers': 'lib/providers',
+        'directives': 'lib/directives',
+        "epsilon": "lib/modules/epsilon",
+        'bower': 'lib/vendor/bower_components'
     },
     'shim': {
         'bootstrap': {

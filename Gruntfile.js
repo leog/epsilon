@@ -84,14 +84,14 @@ module.exports = function (grunt) {
             pages: {
                 expand: true,
                 cwd: '<%= appConfig.pages %>',
-                src: '**/styles/*.less',
+                src: '**/*.less',
                 dest: '<%= appConfig.pages %>',
                 ext: '.min.css'
             },
             widgets: {
                 expand: true,
                 cwd: '<%= appConfig.widgets %>',
-                src: '**/styles/*.less',
+                src: '**/*.less',
                 dest: '<%= appConfig.widgets %>',
                 ext: '.min.css'
             }
