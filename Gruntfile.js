@@ -188,8 +188,8 @@ module.exports = function (grunt) {
             'eslint',
             'less',
             //'hub:widgets',
-            'connect:normal',
-            'open:local',
+            'connect:normal:keepalive'
+            //'open:local',
             //'watch'
         ]);
     });
