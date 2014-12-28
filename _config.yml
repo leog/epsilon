@@ -1,1 +1,1 @@
-include: ["pages/example/_example.html", "pages/example/subexample/_subexample.html"]
+include: ["_example.html", "_subexample.html"]
