@@ -1,5 +1,5 @@
 define([
-    'jquery',
+    'epsilon',
     // External deps
     'angular-ui-router',
     // Epsilon deps
@@ -9,9 +9,8 @@ define([
     'widgets/helloWorld/helloWorld.cfg',
     // > Provider
     'providers/browser.srv'
-], function($) {
+], function(epsilon) {
     "use strict";
-    var externalDeps = ['ui.router'],
-        internalDeps = $.map(arguments, function(e){return e && e.moduleName;});
-    return internalDeps.concat(externalDeps);
+    var externalDeps = ['ui.router'];
+    return epsilon.depsWith(arguments, externalDeps);
 });

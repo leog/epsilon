@@ -1,10 +1,9 @@
 define([
-    'jquery',
+    'epsilon',
     // External deps
     'angular-truncate'
-], function($) {
+], function(epsilon) {
     "use strict";
-    var externalDeps = ['truncate'],
-        internalDeps = $.map(arguments, function(e){return e && e.moduleName;});
-    return internalDeps.concat(externalDeps);
+    var externalDeps = ['truncate'];
+    return epsilon.depsWith(arguments, externalDeps);
 });
