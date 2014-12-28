@@ -1,5 +1,5 @@
 require.config({
-    'baseUrl': '',
+    'baseUrl': '/epsilon',
     'paths': {
         // Bower libraries paths
         'i18n': 'lib/vendor/bower_components/requirejs-i18n/i18n',
