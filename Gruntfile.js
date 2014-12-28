@@ -34,11 +34,10 @@ module.exports = function (grunt) {
 
     var appConfig = {
         app: 'app',
+        lib: 'app/lib',
         pages: 'app/pages',
         widgets: 'app/widgets',
-        directives: 'app/lib/directives',
-        filters: '',
-        
+        directives: 'app/lib/directives'
     };
 
     /**
