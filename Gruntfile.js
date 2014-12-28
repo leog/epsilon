@@ -27,6 +27,7 @@ module.exports = function (grunt) {
     grunt.renameTask('watch', 'hubWatch');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-eslint');
+    grunt.loadNpmTasks('grunt-gh-pages');
 
     /**
      * @type {{app: string, widgets: string, shared: string, pages: string, apps: string}}
@@ -175,6 +176,13 @@ module.exports = function (grunt) {
             local: {
                 url: '<%= connect.options.protocol %>://<%= connect.options.hostname %>:<%= connect.options.port %>/<%= connect.options.base %>'
             }
+        },
+
+        'gh-pages': {
+            options: {
+                base: 'app'
+            },
+            src: ['**']
         }
     });
 
