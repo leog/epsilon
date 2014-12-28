@@ -180,7 +180,8 @@ module.exports = function (grunt) {
 
         'gh-pages': {
             options: {
-                base: 'app'
+                base: 'app',
+                add: true
             },
             src: ['**']
         }
