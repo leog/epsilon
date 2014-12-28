@@ -34,10 +34,11 @@ module.exports = function (grunt) {
 
     var appConfig = {
         app: 'app',
-        lib: 'app/lib',
         pages: 'app/pages',
         widgets: 'app/widgets',
-        directives: 'app/lib/directives'
+        directives: 'app/lib/directives',
+        filters: '',
+        
     };
 
     /**
@@ -55,7 +56,7 @@ module.exports = function (grunt) {
                 config: "eslint.json"
             },
             all: [
-                '<%= appConfig.lib %>/**/*.js',
+                '<%= appConfig.directives %>/**/*.js',
                 '<%= appConfig.widgets %>/**/*.js',
                 '<%= appConfig.pages %>/api/**/*.js',
                 '!<%= appConfig.lib %>/bower_components/**/*.js'

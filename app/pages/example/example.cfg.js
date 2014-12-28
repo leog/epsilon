@@ -1,15 +1,16 @@
 ﻿define([
+    'require',
     'angular',
     'pages/example/example.deps',
     'pages/example/example.ctrl',
     'css!pages/example/example.min.css'
-], function (angular, dependencies, controller) {
+], function (require, angular, dependencies, controller) {
     'use strict';
     var settings = {
         moduleName: 'ExamplePage',
         pageConfig: {
             url: '/example',
-            templateUrl: 'pages/example/_example.html'
+            templateUrl: require.toUrl('pages/example/_example.html')
         }
     };
     angular
