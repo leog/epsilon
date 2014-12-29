@@ -10,7 +10,7 @@ require([
         'myApp.deps',
         // App style
         'css!lib/styles/myApp.min'
-    ], function (dependencies, examplePage) {
+    ], function (dependencies) {
         angular
             .module('myApp', dependencies)
             .config(['$locationProvider','$stateProvider', function ($locationProvider) {
