@@ -3,7 +3,9 @@ epsilon
 
 Web UI Architecture
 
-* Run "npm install && bower install"
-* Server will run running "grunt server"
+For local development:
+* Run ´´´npm install && bower install´´´
+* Server will run running ´´´grunt server´´´
+* Go to http://127.0.0.1
 
-Demo it at: http://leog.github.io/epsilon/
+Demo it online at: http://leog.github.io/epsilon/
