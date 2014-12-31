@@ -3,4 +3,4 @@ bower_components
 .idea*
 docs
 *.min.css
-test/karma_html
+spec/karma_html
