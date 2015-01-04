@@ -23,12 +23,6 @@ module.exports = function (grunt) {
     });
 
     /**
-     * Load grunt-hub task and rename watch to hub-watch so it doesn't conflict with other grunt-contrib-watch task
-     */
-    grunt.loadNpmTasks('grunt-hub');
-    grunt.renameTask('watch', 'hubWatch');
-
-    /**
      * @type {{app: string, widgets: string, shared: string, pages: string, apps: string}}
      */
 
@@ -45,11 +39,6 @@ module.exports = function (grunt) {
      */
     grunt.initConfig({
         appConfig: appConfig,
-        karma: {
-            unit: {
-                configFile: 'karma.conf.js'
-            }
-        },
         eslint: {
             options: {
                 config: "eslint.json"
@@ -97,48 +86,6 @@ module.exports = function (grunt) {
             }
         },
         /**
-         * Looks for gruntfiles inside components and runs specified tasks
-         * @module grunt-hub
-         * @prop {object} all
-         * @param {object} widgets
-         */
-        hub: {
-            widgets: {
-                src: ['<%= appConfig.widgets %>/**/Gruntfile.js'],
-                tasks: ['compile']
-            }
-        },
-        /**
-         * Watch files for change and run specified tasks
-         * @module grunt-contrib-watch
-         * @prop {object} all
-         * @prop {object} styles
-         */
-        watch: {
-            all: {
-                options: {livereload: true},
-                files: ['<%= appConfig %>/**/*.html']
-            },
-            styles: {
-                files: [
-                    '<%= appConfig.pages %>/**/styles/*.less',
-                    '<%= appConfig.widgets %>/**/styles/*.less',
-                    '<%= appConfig.lib %>/styles/less/*.less',
-                    '<%= appConfig.directives %>/**/*.less'
-                ],
-                tasks: ['hub:widgets', 'less']
-            },
-            javascript: {
-                files: [
-                    '<%= appConfig.lib %>/**/*.js',
-                    '<%= appConfig.widgets %>/**/*.js',
-                    '<%= appConfig.pages %>/**/*.js',
-                    '<%= appConfig.apps %>/**/*.js',
-                ],
-                tasks: ['eslint']
-            }
-        },
-        /**
          * Creates a nodejs server with or without livereload
          * @module grunt-contrib-connect
          * @prop {object} livereload
@@ -150,7 +97,7 @@ module.exports = function (grunt) {
                 port: 80,
                 protocol: 'http',
                 hostname: '127.0.0.1',
-                base: '',
+                keepalive: true,
                 livereload: false
             },
             normal: {
@@ -165,18 +112,27 @@ module.exports = function (grunt) {
                         ];
                     }
                 }
+            },
+            test: {
+                options: {
+                    protocol: 'http',
+                    port: 8888,
+                    keepalive: false,
+                    debug: false,
+                    middleware: function (connect, options, middlewares) {
+                        middlewares.unshift(function (req, res, next) {
+                            if (/^image\//.test(req.headers.accept)) {
+                                res.setHeader('Content-Type', 'image/png');
+                                res.end('')
+                            } else {
+                                return next();
+                            }
+                        });
+                        return middlewares;
+                    }
+                }
             }
         },
-        /**
-         * Opens a browser tab on the defined location
-         * @module grunt-open
-         */
-        open: {
-            local: {
-                url: '<%= connect.options.protocol %>://<%= connect.options.hostname %>:<%= connect.options.port %>/<%= connect.options.base %>'
-            }
-        },
-
         'gh-pages': {
             options: {
                 base: 'app',
@@ -197,14 +153,14 @@ module.exports = function (grunt) {
                         requireConfig: {
                             baseUrl: '../app',
                             paths: {
-                                'angular-mocks': 'app/lib/vendor/bower_components/angular-mocks/angular-mocks'
+                                'angular-mocks': 'lib/vendor/bower_components/angular-mocks/angular-mocks'
                             },
                             shim: {
                                 'angular-mocks': ['angular']
-                            }
+                            },
+                            deps: ['css!lib/styles/myApp.min.css']
                         }
                     },
-                    display: 'short',
                     summary: true,
                     host: 'http://127.0.0.1:8888/'
                 }

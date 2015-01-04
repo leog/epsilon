@@ -1,5 +1,4 @@
-﻿/*global document*/
-require([
+﻿require([
     "jquery",
     "angular",
     "bootstrap"

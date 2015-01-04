@@ -9,7 +9,8 @@
 		"camelcase": [1],
 		"dot-notation": [1],
 		"no-loop-func": [1],
-		"no-unused-expressions": [1]
+		"no-unused-expressions": [1],
+        "no-irregular-whitespace": [0]
     },
     "globals":{
         "define": true

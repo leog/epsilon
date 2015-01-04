@@ -1,6 +1,5 @@
-﻿/*global define*/
-define({
+﻿define({
     "root": {
-        "HelloWorld": "Hello World"
+        "HelloWorld": "Hi World"
     }
 });
