@@ -4,5 +4,5 @@ bower_components
 .grunt
 docs
 *.min.css
-spec/karma_html
+test/karma_html
 _SpecRunner.html

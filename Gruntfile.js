@@ -10,21 +10,10 @@ var mountFolder = function (connect, dir) {
     return connect.static(require('path').resolve(dir));
 };
 
-/**
- * @param grunt
- */
 module.exports = function (grunt) {
-    /**
-     * Load all tasks
-     * @module load-grunt-tasks
-     */
     require('load-grunt-tasks')(grunt, {
         pattern: ['grunt-*', '!grunt-template-jasmine-requirejs']
     });
-
-    /**
-     * @type {{app: string, widgets: string, shared: string, pages: string, apps: string}}
-     */
 
     var appConfig = {
         app: 'app',
@@ -34,9 +23,6 @@ module.exports = function (grunt) {
         directives: 'app/lib/directives'
     };
 
-    /**
-     *  Initial configuration
-     */
     grunt.initConfig({
         appConfig: appConfig,
         eslint: {
@@ -50,9 +36,6 @@ module.exports = function (grunt) {
                 '!<%= appConfig.lib %>/bower_components/**/*.js'
             ]
         },
-        /**
-         * Less task
-         */
         less: {
             options: {
                 compress: true,
@@ -85,13 +68,6 @@ module.exports = function (grunt) {
                 ext: '.min.css'
             }
         },
-        /**
-         * Creates a nodejs server with or without livereload
-         * @module grunt-contrib-connect
-         * @prop {object} livereload
-         * @prop {object} prod
-         * @prop normal
-         */
         connect: {
             options: {
                 port: 80,
@@ -169,18 +145,18 @@ module.exports = function (grunt) {
         }
     });
 
-    /**
-     * Server Task
-     * @namespace server
-     */
     grunt.registerTask('server', function () {
         grunt.task.run([
             'eslint',
             'less',
-            //'hub:widgets',
-            'connect:normal:keepalive'
-            //'open:local',
-            //'watch'
+            'connect:normal'
+        ]);
+    });
+
+    grunt.registerTask('test', function () {
+        grunt.task.run([
+            'connect:test',
+            'jasmine'
         ]);
     });
 };
