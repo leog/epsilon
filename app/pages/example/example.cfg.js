@@ -9,7 +9,7 @@
     var settings = {
         moduleName: 'ExamplePage',
         pageConfig: {
-            url: 'example',
+            url: '/example',
             templateUrl: require.toUrl('pages/example/_example.html')
         }
     };

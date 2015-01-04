@@ -9,7 +9,7 @@ define([
     var settings = {
         moduleName: 'SubexamplePage',
         pageConfig: {
-            url: 'subexample',
+            url: '/subexample',
             templateUrl: require.toUrl('pages/example/subexample/_subexample.html')
         }
     };
