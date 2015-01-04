@@ -18,16 +18,15 @@ module.exports = function (grunt) {
      * Load all tasks
      * @module load-grunt-tasks
      */
-    require('load-grunt-tasks')(grunt);
+    require('load-grunt-tasks')(grunt, {
+        pattern: ['grunt-*', '!grunt-template-jasmine-requirejs']
+    });
 
     /**
      * Load grunt-hub task and rename watch to hub-watch so it doesn't conflict with other grunt-contrib-watch task
      */
     grunt.loadNpmTasks('grunt-hub');
     grunt.renameTask('watch', 'hubWatch');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-eslint');
-    grunt.loadNpmTasks('grunt-gh-pages');
 
     /**
      * @type {{app: string, widgets: string, shared: string, pages: string, apps: string}}
@@ -184,6 +183,32 @@ module.exports = function (grunt) {
                 add: true
             },
             src: ['**']
+        },
+        jasmine: {
+            test: {
+                options: {
+                    keepRunner: true,
+                    specs: [
+                        'spec/unit/**/*.spec.js'
+                    ],
+                    template: require('grunt-template-jasmine-requirejs'),
+                    templateOptions: {
+                        requireConfigFile: 'app/main.js',
+                        requireConfig: {
+                            baseUrl: '../app',
+                            paths: {
+                                'angular-mocks': 'app/lib/vendor/bower_components/angular-mocks/angular-mocks'
+                            },
+                            shim: {
+                                'angular-mocks': ['angular']
+                            }
+                        }
+                    },
+                    display: 'short',
+                    summary: true,
+                    host: 'http://127.0.0.1:8888/'
+                }
+            }
         }
     });
 

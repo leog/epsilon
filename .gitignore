@@ -1,6 +1,8 @@
 node_modules
 bower_components
 .idea*
+.grunt
 docs
 *.min.css
 spec/karma_html
+_SpecRunner.html
