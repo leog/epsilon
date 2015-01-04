@@ -14,9 +14,9 @@
             .module('myApp', dependencies)
             .config(['$locationProvider','$stateProvider', function ($locationProvider) {
                 $locationProvider.html5Mode({
-				  enabled: true,
-				  requireBase: false
-				});
+                    enabled: true,
+                    requireBase: false
+                });
             }]);
         $(function() {
             angular.bootstrap(document, ['myApp']);
