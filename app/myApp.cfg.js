@@ -13,7 +13,10 @@
         angular
             .module('myApp', dependencies)
             .config(['$locationProvider','$stateProvider', function ($locationProvider) {
-                $locationProvider.html5Mode(true);
+                $locationProvider.html5Mode({
+                    enabled: true,
+                    requireBase: false
+                });
             }]);
         $(function() {
             angular.bootstrap(document, ['myApp']);
