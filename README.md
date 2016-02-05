@@ -3,11 +3,11 @@ Web UI Architecture to handle a large AngularJS application.
 
 Featured in my blog on a post series:
 
-0. [**Introduction**](http://leog.me/log/large-angularjs-app-introduction): Why did I start the post series
-1. [**Conventions**](http://leog.me/log/large-angularjs-app-conventions): Be sure to have them if you want to succeed
-2. [**Environment**](http://leog.me/log/large-angularjs-app-environment): Yeoman (which includes GruntJS and Bower) over NodeJS
-3. [**Abstractions**](http://leog.me/log/large-angularjs-app-abstractions): Handling 3 basic abstractions to implement everything
-4. [**Components**](http://leog.me/log/large-angularjs-app-components): Developing components to use and reuse across abstractions
+0. [**Introduction**](http://old.leog.me/log/large-angularjs-app-introduction): Why did I start the post series
+1. [**Conventions**](http://old.leog.me/log/large-angularjs-app-conventions): Be sure to have them if you want to succeed
+2. [**Environment**](http://old.leog.me/log/large-angularjs-app-environment): Yeoman (which includes GruntJS and Bower) over NodeJS
+3. [**Abstractions**](http://old.leog.me/log/large-angularjs-app-abstractions): Handling 3 basic abstractions to implement everything
+4. [**Components**](http://old.leog.me/log/large-angularjs-app-components): Developing components to use and reuse across abstractions
 5. **Testing**: Karma and Jasmine using RequireJS
 6. **Minification**: Using RequireJS minification tool r.js over this complex architecture
 7. **Distribution**: Alternatives to distribute your code to other teams
